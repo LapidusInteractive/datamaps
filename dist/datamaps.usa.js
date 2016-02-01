@@ -559,6 +559,22 @@
       .attr('r', function ( datum ) {
         return val(datum.radius, options.radius, datum);
       })
+      .style('stroke', function ( datum ) {
+        return val(datum.borderColor, options.borderColor, datum);
+      })
+      .style('stroke-width', function ( datum ) {
+        return val(datum.borderWidth, options.borderWidth, datum);
+      })
+      .style('stroke-opacity', function ( datum ) {
+        return val(datum.borderOpacity, options.borderOpacity, datum);
+      })
+      .style('fill-opacity', function ( datum ) {
+        return val(datum.fillOpacity, options.fillOpacity, datum);
+      })
+      .style('fill', function ( datum ) {
+        var fillColor = fillData[ val(datum.fillKey, options.fillKey, datum) ];
+        return fillColor || fillData.defaultFill;
+      })
     .transition()
       .duration(0)
       .attr('data-info', function(d) {
